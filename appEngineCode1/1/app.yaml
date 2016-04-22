@@ -1,0 +1,12 @@
+application: altmail-1
+version: 1
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /_ah/mail/.+
+  script: handle_incoming_email.php
+  login: admin
+
+inbound_services:
+- mail
