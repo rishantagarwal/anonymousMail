@@ -8,3 +8,5 @@
 6. API's  have been written using basic 'PHP' and there is a plan to migrate it to 'NODE JS'.
 7. I will release an 'iOS' and 'Android' app for it in future.
 8. Although its in production , it can still be seen at - [Link](https://mailing-bindasrishant-1.c9.io/ui/index.php)
+
+![Screenshot](/screenshot.png?raw=true "Screenshot")
