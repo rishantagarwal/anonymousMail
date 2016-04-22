@@ -1,0 +1,8 @@
+Array
+(
+    [date] => Thu, 21 Apr 2016 07:45:23 -0400 (EDT)
+    [to] => 
+    [body] => 
+    [from] => Investopedia News
+    [subject] => 25 Highest Paying Companies (and Jobs) in America
+)
