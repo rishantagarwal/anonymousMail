@@ -1,0 +1,19 @@
+{
+  "name": "anonymous-mail",
+  "version": "1.0.0",
+  "description": "Disposable Mail service",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishantagarwal/anonymousMail.git"
+  },
+  "author": "Rishant Agarwal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rishantagarwal/anonymousMail/issues"
+  },
+  "homepage": "https://github.com/rishantagarwal/anonymousMail#readme"
+}
