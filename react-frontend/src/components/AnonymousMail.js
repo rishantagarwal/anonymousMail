@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Header from "./header/Header"
 
 class AnonymousMail extends Component {
 	constructor(props) {
@@ -6,7 +7,11 @@ class AnonymousMail extends Component {
 	}
 
 	render() {
-		return <div>Hello World</div>
+		return (
+			<div>
+				<Header />
+			</div>
+		)
 	}
 }
 

@@ -1,3 +1,21 @@
-body {
-	background-color: green;
+.header_left_logo {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #183442;
 }
+
+.header_logo_text {
+	cursor: pointer;
+	float: left;
+	font-weight: bold;
+	color: white;
+}
+
+@charset 'UTF-8';
+
+/* 1. Vendors */
+/*@import './layout.css';
+@import './reset.css';
+@import './styles.css';*/
