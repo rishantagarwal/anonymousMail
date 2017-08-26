@@ -17,7 +17,7 @@ header("Content-Type: text/html; charset=utf-8");
 			output_data : JSON (I am using)
 			status_code : Send status message for headers
 
-	
+
  	*/
 
 	require_once("Rest.inc.php");
@@ -34,7 +34,7 @@ header("Content-Type: text/html; charset=utf-8");
 		const DB = "c9";
 		const HASHKEY = "f@ckH1kar1";
 		const EMAILSUFFIX = "altmail-1.appspotmail.com";
-		
+
 		private $cookieTmp = NULL;
 		private $db = NULL;
 		private $createNewEmailInDb = NULL;
@@ -108,7 +108,7 @@ header("Content-Type: text/html; charset=utf-8");
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			
+
 			$result=$this->checkMailExists($this->cookieTmp);
 			if($result==false){
 			//Generating New Email
@@ -130,7 +130,7 @@ header("Content-Type: text/html; charset=utf-8");
 				$this->response($this->json($result), 200);
 			}
 		}
-		
+
 		// private function updateMailStatus(){
 		// 	// Cross validation if the request method is GET else it will return "Not Acceptable" status
 		// 	if($this->get_request_method() != "POST"){
@@ -141,22 +141,22 @@ header("Content-Type: text/html; charset=utf-8");
 		// 	// Input validations
 		// 	// If invalid inputs "Bad Request" status message and reason
 		// 	$error = array('status' => "Failed", "msg" => "Invalid Email address");
-		// 	$this->response($this->json($error), 400);	
+		// 	$this->response($this->json($error), 400);
 		// }
-		
+
 		private function receiveMail(){
 			file_put_contents('log.txt', print_r($this->_request, true));
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);}
-		
+
             if(!empty($this->_request['to'])|| !empty($this->_request['from'])||!empty($this->_request['subject'])||!empty($this->_request['date'])||!empty($this->_request['body'])){
-           
+
                 $to=($this->_request['to']);
                 $from=($this->_request['from']);
-            	$subject = $this->_request['subject'];
-            	$body = $this->_request['body'];
-            
-            
+            		$subject = $this->_request['subject'];
+            		$body = $this->_request['body'];
+
+
                if($this->insertReceivedEmail  != null){
 	   		   $tmp=$this->insertReceivedEmail ->bind_param("ssss",$to,$from,$body,$subject);
 	   		   if(false===$tmp){$this->response('', 204);}
@@ -171,12 +171,12 @@ header("Content-Type: text/html; charset=utf-8");
 				}
 			/*	$asd = array("to"=>$to,"from"=>$from,"subject"=>$subject,"body"=>$body,"date"=>$date);
 				$this->response($this->json($asd),200);*/
-              }	
-              
+              }
+
              else {
 				$error = array('status' => "Failed", "msg" => "Invalid Email address");
 				$this->response($this->json($error), 400);
-                }  
+                }
 		}
 
 		private function getMails(){
