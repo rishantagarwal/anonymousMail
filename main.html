@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Disposable MailBox</title>
+     <meta charset="UTF-8"/>
+     <link href="ui/styles.css" rel="stylesheet"/>
+     <link href="ui/layout.css" rel="stylesheet">
+     <link href="ui/reset.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+     <header id="header">
+         <div class="container">
+             <div class="header_left_logo" style="float:left;margin: 0;padding: 0;height:100%;background-color: #183442">
+                 <img src="images/icons/-delete.svg" class="corss-img"/>
+                 <img src="images/icons/menu.svg" class="burger-img"/>
+
+                 <a href="/" class="header_logo">
+                     <img src="ui/images/mail_logo.png" class="header_logo-img"/>
+                 </a>
+
+                 <div class="header_logo_text" style="cursor:pointer;float:left;font-weight: bold;color:white;"
+                      onclick="window.location='/'">
+                     MAILBOX
+                 </div>
+             </div>
+
+             <div class="login_tag" style="border:1px solid #c1c1c1;">
+                 <a href="/" class="hader_menu-link">Sign up</a>
+             </div>
+             <div class="login_tag">
+                 <a href="/" class="hader_menu-link">Log in</a>
+             </div>
+             <div class="login_tag">
+              <span class="dropdown" >
+                         <i class="fa fa-smile-o fa-lg" onclick="" style="color:#eee;"></i>
+                 </span>
+             </div>
+
+         </div>
+         <div class="lb_search_full" id="mobile_search">
+             <input type="text" placeholder="Enter Inbox" class="lb-input"
+                    onkeydown="if (event.keyCode == 13) { subInboxSameZone($('#inbox_field_mob').val()); $('#inbox_field_mob').blur(); return false; }"
+                    id="inbox_field_mob"/>
+             <span id='inbox_button_mob' class="lb-btn"
+                   onclick="subInboxSameZone($('#inbox_field_mob').val());  $('#inbox_field_mob').blur(); return false;">
+                    <i class="fa fa-envelope fa-2x" style="color:white;padding-top: 8px;"></i>
+             </span>
+         </div>
+         <div class="mail_header-all2" id="status_bar">
+             <div style="float:right" style="margin:0;padding:0;">
+                 <span id="pane_status_msg" class="pane_status" style="color:blue;"></span>
+                 <span id="pane_error_msg" class="pane_status" style="color:red;"></span>
+             <span class="fa-stack fa-manylarge" title="Delete Emails"
+                   onclick="trashEmails();"
+                   style="cursor: pointer">
+                 <i class="fa fa-square fa-stack-2x" style="color:#aaa" id="trash_but"></i>
+                 <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+             </span>
+             <span class="fa-stack fa-manylarge"
+
+                   title="Login to Save Emails"
+
+                   style="cursor: pointer">
+                 <i class="fa fa-square fa-stack-2x" style="color: #aaa" id="save_but"></i>
+                 <i class="fa fa-save fa-stack-1x fa-inverse"></i>
+             </span>
+             <span class="fa-stack fa-manylarge"
+
+                   title="Login to Forward Emails"
+
+                   style="cursor: pointer;">
+                 <i class="fa fa-square fa-stack-2x" style="color: #aaa" id="forward_but"></i>
+                 <i class="fa fa-mail-forward fa-stack-1x fa-inverse"></i>
+             </span>
+             </div>
+         </div>
+     </header>
+     <section class="lb lb_all" style="background: #eee;position:fixed;">
+        <div class="lb-container">
+        <div class="lb-container-text">
+
+            <div class="lb-search">
+                <input type="text" placeholder="Enter Inbox" class="lb-input" onkeydown="if (event.keyCode == 13) { subInboxSameZone($('#inbox_field').val()); return false; }" id="inbox_field">
+                        <span id="inbox_button" class="lb-btn" onclick="subInboxSameZone($('#inbox_field').val()); return false;">
+                                        <i class="fa fa-envelope fa-2x" style="color:white;padding-top: 8px;"></i>
+                        </span>
+            </div>
+        </div>
+
+        <div class="lb_all_list">
+            <ul>
+                <li class="lb_all_item">
+                    <p class="lb_all-text bold1-active" id="bigrow_public" onclick="itemInboxClick('public')">
+                        Public Inboxes<span>@mailbox</span></p>
+                    <ul class="lb_all_sub-list">
+                      <li class="lb_all_sub-item " onclick="subItemInboxClick('public', 'ewewewweweew')">
+                            <div class="lb_all_sub-item_text">
+                                <div style="min-width: 2.4rem;float:right;text-align: right;" onclick="unpinInbox('public', 'ewewewweweew', 'none;');if(event.stopPropagation){event.stopPropagation();}event.cancelBubble=true;" title="Delete Saved Query">
+                                    <i class="fa fa-close" style="display:none;;cursor: pointer;margin-left: 3px;color:#aaa;"></i>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <p></p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    </section>
+    <main class="index all-message-index">
+    <section class="single_mail">
+        <div id="msgpane" class="msg" style="display: none;">
+            <div>
+                <div style="font-size:2rem;float:left;width: 75%;">
+
+                </div>
+                <div style="font-size:1.1rem;float:right;text-align:right;width:5%">
+                    &nbsp;
+                </div>
+                <div style="font-size:1.1rem;float:right;text-align:right;width:20%">
+
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                <span style="float:right;width:8%;font-size:1.1rem;" id="contenttypebuttons">
+                </span>
+                </div>
+            </div>
+            <div style="clear: both;margin-top: 33px;">
+                <hr>
+            </div>
+
+            <iframe id="msg_body" style="border: 0;overflow: hidden;" width="100%" height="100%" name="msg_body" marginheight="0">
+                EMAIL BODY
+            </iframe>
+
+        </div>
+        <div id="publicm8rguy" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 18px; padding-top: 40px;">
+            <br>
+            <br>
+            [ This Inbox channel is currently Empty ]
+            <br>
+
+        </div>
+
+        <ul class="single_mail-body" id="inboxpane" style="background-color: rgb(255, 255, 255);">
+        </ul>
+        <div style="height:80px;background-color: #ffffff"></div>
+
+    </section>
+</main>
+<footer id="footer">
+    <div class="right_foo">
+        <p class="copyright-text">Copyright 2017, Inc. All Right Reserved. <a href="/terms.jsp">  &nbsp;  &nbsp; Terms and
+            Conditions</a> and <a href="/terms.jsp">Privacy Policy</a>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <a href=""><i class="fa fa-envelope">support@mailbox.com</i></a>
+        </p>
+    </div>
+</footer>
+</body>
+</html>
